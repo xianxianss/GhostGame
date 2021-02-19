@@ -19,32 +19,28 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Move();
-        GetHorizontal();
+       
     }
 
 
     #region 方法
 
-    private void GetHorizontal()
-    {
-        h = Input.GetAxis("Horizontal");
-    }
+    
+     
+
+
 
     /// <summary>
     /// 移動
     /// </summary>
     private void Move()
     {
-        rig.velocity = new Vector2(h * speed, rig.velocity.y);
+     
+        float v = Input.GetAxis("Vertical"); 
+        float h = Input.GetAxis("Horizontal");
+       
+        rig.MovePosition(transform.position + transform.forward * v * speed * Time.deltaTime + transform.right * h * speed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            transform.localEulerAngles = Vector3.zero;
-        }
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            transform.localEulerAngles = new Vector3(0, 180, 0);
-        }
     }
 
 
