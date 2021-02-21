@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         float v = Input.GetAxis("Vertical"); 
         float h = Input.GetAxis("Horizontal");
        
-        rig.MovePosition(transform.position + transform.forward * v * speed * Time.deltaTime + transform.right * h * speed * Time.deltaTime);
+        rig.MovePosition(transform.position + transform.up * v * speed * Time.deltaTime + transform.right * h * speed * Time.deltaTime);
 
     }
 
